@@ -1,0 +1,10 @@
+
+.idea
+*~
+*.iml
+/node_modules
+client/bower_components
+/server
+/app.js
+/config.js
+/router.js

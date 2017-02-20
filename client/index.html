@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html ng-app="App">
+
+<head>
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- SPELLS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!--app-->
+    <script src="./app.js"></script>
+
+    <!--controllers-->
+    <script src="./modules/pages/auth/controllers/login.ctrl.js"></script>
+    <script src="./modules/pages/auth/controllers/signup.ctrl.js"></script>
+    <script src="./modules/pages/home/controllers/home.ctrl.js"></script>
+    <script src="./modules/pages/auth/controllers/forgot.password.ctrl.js"></script>
+
+</head>
+
+<!-- define angular controller -->
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Diplom</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="/login"><i class="fa fa-shield"></i> Login</a></li>
+            <li><a href="/about"><i class="fa fa-comment"></i> About</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id="main">
+
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+    <div ui-view></div>
+
+
+</div>
+
+<footer class="text-center">
+
+</footer>
+
+</body>
+
+</html>
