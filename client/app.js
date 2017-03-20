@@ -33,6 +33,11 @@ App.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('about', {
             url: '/about',
             templateUrl: './modules/pages/about/templates/about_page.html'
+        })
+        .state('profile_page', {
+            url: '/profile_page',
+            controller: 'ProfileController',
+            templateUrl: './modules/pages/profile/templates/profile_page.html'
         });
 
 

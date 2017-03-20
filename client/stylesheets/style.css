@@ -270,3 +270,13 @@ label:hover:before {
   color: #aaaaaa;
   font-weight: bold;
 }
+
+
+
+.container{
+  width: 100%;
+}
+.mish{
+  width: 30%;
+  margin: 0 auto 0 auto;
+}
