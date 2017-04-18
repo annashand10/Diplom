@@ -1,7 +1,8 @@
-App.controller('ProfileController', ['$scope', function($scope) {
+App.controller('ProfileController', ['$scope','$rootScope', function($scope, $rootScope) {
 
     $scope.greeting = 'Azaza mishio!';
 
+    $rootScope.isAuthorized = true;
 
     $scope.mishoy = ['Vtura', 'Sheva', 'Rotsker', 'Resheto']
 

@@ -92,7 +92,7 @@ a {
 
 .page-content {
   height:90%;
-  background-color:#363;
+  background-color:#aaaaaa;
   width:700px;
   float:left;
 }
@@ -370,6 +370,7 @@ label:hover:before {
 .container{
   width: 100%;
 }
+
 .mish{
   width: 30%;
   margin: 0 auto 0 auto;
@@ -501,3 +502,11 @@ label:hover:before {
 
 
 /*===================*/
+
+
+
+.profile-container{
+  width: 110%;
+  background-color: #f8f8f8;
+  height: 500px;
+}
