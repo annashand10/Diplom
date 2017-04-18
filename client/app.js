@@ -1,5 +1,5 @@
 // create the module and name it scotchApp
-var App = angular.module('App', ['ui.router']);
+var App = angular.module('App', ['ui.router', 'ui.bootstrap']);
 
 App.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -7,10 +7,23 @@ App.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $stateProvider
     // HOME STATES AND NESTED VIEWS ========================================
+
         .state('home', {
+
             url: '/home',
             controller: 'HomeController',
             templateUrl: './modules/pages/home/templates/home.html'
+            // url: '/home',
+            // views: {
+            //     nav: {
+            //         controller: 'NavigationController',
+            //         templateUrl: 'modules/shared/navigation/templates/navbar.html'
+            //     },
+            //     content: {
+            //         controller: 'HomeController',
+            //         templateUrl: './modules/pages/home/templates/home.html'
+            //     }
+            // }
         })
 
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
@@ -23,7 +36,7 @@ App.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('signup', {
             url: '/signup',
             controller: 'SignupController',
-            templateUrl: './modules/pages/auth/templates/login.html'
+            templateUrl: './modules/pages/auth/templates/signup.html'
         })
         .state('forgot_password', {
             url: '/forgot_password',

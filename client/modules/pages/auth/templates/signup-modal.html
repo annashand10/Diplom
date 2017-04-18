@@ -1,0 +1,22 @@
+<div class="creationModal">
+    <div ng-show="saving">
+        <div class="creationLoader"></div>
+        <h3>Please wait...</h3>
+    </div>
+
+    <div ng-hide="saving">
+        <div ng-hide="errorSaving">
+            <div class="success">
+                <i class="fa fa-check"></i>
+            </div>
+            <h3>Please Check yout Email Address</h3> <br>
+            <h3>Confirmation was send!</h3>
+        </div>
+        <div ng-show="errorSaving">
+            <div class="error">
+                <i class="fa fa-close"></i>
+            </div>
+            <h3>Route was not dispatched</h3>
+        </div>
+    </div>
+</div>

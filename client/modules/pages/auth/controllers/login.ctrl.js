@@ -1,7 +1,13 @@
-App.controller('LoginController', function($scope) {
-    // create a message to display in our view
+App.controller('LoginController', ['$scope','$state','$rootScope', function($scope, $state,$rootScope) {
+    $scope.greeting = 'Hola!';
 
+    $rootScope.isAuthorized = false;
 
-    let message = 'fdfsdfdsf';
-  console.log(message)
-});
+    $scope.logIn = logIn;
+
+    function logIn() {
+
+        $state.go('home')
+    }
+
+}]);

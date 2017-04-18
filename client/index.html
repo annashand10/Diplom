@@ -9,15 +9,28 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 
+
+
+
+
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- SPELLS -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!--<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>-->
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>-->
+
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+
 
     <!--app-->
     <script src="./app.js"></script>
+    <script src="./app.controller.js"></script>
+
 
     <!--controllers-->
     <script src="./modules/pages/auth/controllers/login.ctrl.js"></script>
@@ -25,37 +38,68 @@
     <script src="./modules/pages/home/controllers/home.ctrl.js"></script>
     <script src="./modules/pages/auth/controllers/forgot.password.ctrl.js"></script>
     <script src="./modules/pages/profile/controllers/profile.ctrl.js"></script>
+    <script src="./modules/shared/navigation/controllers/navigation.ctrl.js"></script>
+    <script src="./modules/shared/header/controllers/header.ctrl.js"></script>
+
 
 
 </head>
 
 <!-- define angular controller -->
-<body>
+<body ng-controller="AppController as ac">
 
-<!--navigation bar -->
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Diplom</a>
+<!--<div class="page-spinner-bar">-->
+    <!--&lt;!&ndash;<div class="bounce1"></div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="bounce2"></div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="bounce3"></div>&ndash;&gt;</div>-->
+<div ng-show="isAuthorized" ng-include src="'./modules/shared/header/templates/header.html'" class="navbar navbar-fixed-top header">
+</div>
+
+<!--<div id="main" class="page-container">-->
+
+
+        <!--&lt;!&ndash;<img src="./images/arrow.png" ng-class="{'rotate-icon': toogledChat}"> </a>&ndash;&gt;-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="row">-->
+            <!--<div class="col-sm-3 col-lg-2">-->
+                <!--<div ng-show="isAuthorized" ng-include src="'./modules/shared/navigation/templates/navbar.html'" class="navbar navbar-default navbar-fixed-side">-->
+                    <!--&lt;!&ndash; normal collapsible navbar markup &ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-sm-9 col-lg-10">-->
+                <!--&lt;!&ndash; your page content &ndash;&gt;-->
+                <!--<div class="page-content" ng-class="{'no-ml': !isAuthorized}">-->
+                    <!--<div class="viewport" ui-view></div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<a href="javascript:;" ng-show="isAuthorized" ng-click="toogleChat()" class="page-quick-sidebar-toggler" style="display:block"></a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+<!--</div>-->
+
+
+<div class="main-content-container" id="content">
+    <div class="row">
+        <div class="col-sm-3 col-lg-2">
+            <div class="sidebar-nav" ng-show="isAuthorized" ng-include src="'./modules/shared/navigation/templates/navbar.html'">
+            </div>
+        </div>
+        <div class="col-sm-9 col-lg-10">
+            <div class="page-content" ng-class="{'no-ml': !isAuthorized}">
+                <div class="viewport" ui-view></div>
+            </div>
         </div>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-            <li><a href="/login"><i class="fa fa-shield"></i> Login</a></li>
-            <li><a href="/about"><i class="fa fa-comment"></i> About</a></li>
-            <li><a href="/profile_page"><i class="fa fa-comment"></i> Profile Page</a></li>
+        <!--<a href="javascript:;" ng-show="isAuthorized" ng-click="toogleChat()" class="page-quick-sidebar-toggler" style="display:block"></a>-->
 
-        </ul>
     </div>
-</nav>
-
-<div id="main">
-
-    <!-- angular templating -->
-    <!-- this is where content will be injected -->
-    <div ui-view></div>
-
-
 </div>
 
 <footer class="text-center">

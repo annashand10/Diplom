@@ -1,6 +1,8 @@
 body {
-  padding: 50px;
+  background: #bdbcdc;
   font: 14px "Varela Round", Helvetica, Arial, sans-serif;
+  height: 100%;
+  margin: 0px;
 }
 
 a {
@@ -8,13 +10,105 @@ a {
   transition: all ease-in-out 200ms;
 }
 
-
-/*=== 2. Anchor Link ===*/
-.login-background{
-  background: #efefef;
-  padding: 10px;
-  font-family: 'Varela Round';
+.no-ml {
+  margin: 0 !important;
 }
+
+#applicationHeaderContainer{
+  width: 100%;
+  height: 5pc;
+  background-color: #4c5264;
+
+}
+
+.applicationHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5pc;
+  min-height: 5pc;
+  background: #4c5264;
+  z-index: 1000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-lines: single;
+  -moz-box-lines: single;
+  -o-box-lines: single;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -o-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -o-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  font-size: 1pc;
+  text-shadow: none;
+}
+
+
+.main-content-container{
+  top: 5pc!important;
+  position: fixed;
+  width: 100%;
+}
+
+#content{}
+#navigation{
+  margin-bottom: 0px;
+  width:100%!important;
+  height:745px;
+  float:left;
+}
+
+
+/* make sidebar nav vertical */
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.page-content {
+  height:90%;
+  background-color:#363;
+  width:700px;
+  float:left;
+}
+
+
+
+  /*=== 2. Anchor Link ===*/
+.login-background{
+  background: #212842;
+  font-family: 'Varela Round';
+  width: 50%;
+  margin: 0 auto 0 200px;
+  padding: 50px 0;
+  border-radius: 8px;
+}
+
 a:hover {
   color: #333333;
   text-decoration: none;
@@ -280,3 +374,130 @@ label:hover:before {
   width: 30%;
   margin: 0 auto 0 auto;
 }
+
+
+
+.box h3{
+  text-align:center;
+  position:relative;
+  top:80px;
+}
+.box {
+  width:70%;
+  height:200px;
+  background:#FFF;
+  margin:40px auto;
+}
+
+/*==================================================
+ * Effect 8
+ * ===============================================*/
+.shadow-effect
+{
+  position: absolute;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.shadow-effect:before, .shadow-effect:after
+{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(8, 8, 8, 0.68);
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  border-radius: 100px / 10px;
+}
+.shadow-effect:after
+{
+  right:10px;
+  left:auto;
+  transform:skew(8deg) rotate(3deg);
+}
+
+.rotate-icon {
+  transform: rotate(180deg);
+}
+
+
+.page-quick-sidebar-toggler {
+  overflow: hidden;
+  z-index: 99999;
+  display: none;
+  width: 28px;
+  height: 27px;
+  position: fixed;
+  top: 10px;
+  left: 15px;
+  text-align: center;
+  padding-top: 6px; }
+.page-quick-sidebar-toggler:hover {
+  background: #303a43; }
+.page-quick-sidebar-open .page-quick-sidebar-toggler {
+  display: inline-block; }
+.page-quick-sidebar-open .page-quick-sidebar-toggler:hover {
+  background: none; }
+
+
+
+.header-btn {
+  background: -webkit-linear-gradient(top,rgba(255,255,255,.3) 0,rgba(255,255,255,.2) 100%);
+  background: linear-gradient(to bottom,rgba(255,255,255,.3) 0,rgba(255,255,255,.2) 100%);
+  color: #f3f3f3;
+  display: block;
+  font-weight: 700;
+  line-height: 30px;
+  margin-right: 8px;
+  min-width: 30px;
+  padding: 7px;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  height: 42px;
+}
+
+
+
+/*=== Modal window ===*/
+
+.creationModal {
+  text-align: center;
+  z-index: 11102 !important;
+}
+
+.agreeModal {
+  text-align: center;
+  z-index: 11102 !important;
+  margin: 40px
+}
+
+.success {
+  font-size: 120px;
+  color: green;
+}
+
+
+.error {
+  font-size: 120px;
+  color: red;
+}
+
+.creationModal h3 {
+  margin:40px;
+}
+
+.creationLoader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #5b9bd1;
+  border-bottom: 16px solid #5b9bd1;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: 40px auto 40px;
+}
+
+
+/*===================*/
