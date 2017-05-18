@@ -1,0 +1,98 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Boards</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li class="active">
+                <strong>Boards</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row" id="sortable-view">
+        <div class="connectPanels" ui-sortable="sortableOptions">
+
+            <div class="col-lg-3" ng-repeat="board in boards" style="overflow:scroll; height:550px;">
+                <div class="ibox float-e-margins" style="position: relative;">
+
+                    <div class="ibox-title">
+                        <!--<h5 ng-bind="board.status.toUpperCase()"></h5>-->
+                        <span class="label" style="font-size: 100%;" ng-class="board.status" ng-bind="board.status.toUpperCase()"></span>
+
+                        <div class="ibox-tools pull-right">
+
+                            <a class="dropdown-toggle" uib-dropdown-toggle href="#">
+                                <i class="fa fa-wrench"></i>
+                                <!--<b class="caret"></b>-->
+                            </a>
+
+                            <!--<ul uib-dropdown-menu class="animated fadeInRight m-t-xs">-->
+                                <!--<li><a href="addTask()">New Task</a></li>-->
+                                <!--<li><a href="#">Remove</a></li>-->
+                                <!--<li class="divider"></li>-->
+                                <!--<li><a href="/login">Logout</a></li>-->
+                            <!--</ul>-->
+
+                        </div>
+                    </div>
+                    <div class="ibox-content" ng-repeat="additional in anotherBoards" >
+                        <p ng-bind="additional.description"></p>
+                    </div>
+                    <a class="remove-board-icon" href="" ng-click="removeBoard(board)"><i class="fa fa-trash-o "></i></a>
+
+                </div>
+            </div>
+
+            <!--<div class="col-lg-3">-->
+                <!--<div class="ibox float-e-margins" style="position: relative;">-->
+                    <!--<div class="ibox-title">-->
+                        <!--<span class="label label-primary pull-right">Doing</span>-->
+                        <!--<h5>Custom Title</h5>-->
+                    <!--</div>-->
+                    <!--<div class="ibox-content">-->
+                        <!--<p ng-bind="board.description"></p>-->
+
+                    <!--</div>-->
+                    <!--<a class="remove-board-icon" href=""><i class="fa fa-trash-o "></i></a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-lg-3">-->
+                <!--<div class="ibox float-e-margins" style="position: relative;">-->
+                    <!--<div class="ibox-title">-->
+                        <!--<span class="label label-danger pull-right">Need Review</span>-->
+                        <!--<h5>Custom Title</h5>-->
+                    <!--</div>-->
+                    <!--<div class="ibox-content">-->
+                        <!--<p>Ipsum used since the 1500s is reproduced below for those interested.</p>-->
+
+                    <!--</div>-->
+                    <!--<a class="remove-board-icon" href=""><i class="fa fa-trash-o "></i></a>-->
+
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-lg-3">-->
+                <!--<div class="ibox float-e-margins" style="position: relative;">-->
+                    <!--<div class="ibox-title">-->
+                        <!--<span class="label label-success pull-right">Done</span>-->
+                        <!--<h5>Custom Title</h5>-->
+                    <!--</div>-->
+                    <!--<div class="ibox-content">-->
+                        <!--<p>The years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>-->
+
+                        <!--&lt;!&ndash;<h1 class="no-margins">80,600</h1>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<small>In first month</small>&ndash;&gt;-->
+                    <!--</div>-->
+                    <!--<a class="remove-board-icon" href=""><i class="fa fa-trash-o "></i></a>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+
+    </div>
+</div>

@@ -4,108 +4,103 @@
 <html ng-app="App">
 
 <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />-->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link href="./stylesheets/css/animate.css" rel="stylesheet">
 
+    <!-- Bootstrap -->
+    <link href="./stylesheets/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Font awesome -->
+    <!--<link href="font-awesome/css/font-awesome.css" rel="stylesheet">-->
 
+    <link rel="stylesheet" type="text/css" href="bower_components/ng-sortable/dist/ng-sortable.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/dataTables/datatables.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.5.5/plugins/bootstrap/datatables.bootstrap.min.css" />
+    <link href="./stylesheets/css/animate.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- SPELLS -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!--<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>-->
     <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>-->
 
     <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-flot/angular-flot.min.js"></script>
 
-
-
-    <!--app-->
-    <script src="./app.js"></script>
-    <script src="./app.controller.js"></script>
-
-
-    <!--controllers-->
-    <script src="./modules/pages/auth/controllers/login.ctrl.js"></script>
-    <script src="./modules/pages/auth/controllers/signup.ctrl.js"></script>
-    <script src="./modules/pages/home/controllers/home.ctrl.js"></script>
-    <script src="./modules/pages/auth/controllers/forgot.password.ctrl.js"></script>
-    <script src="./modules/pages/profile/controllers/profile.ctrl.js"></script>
-    <script src="./modules/shared/navigation/controllers/navigation.ctrl.js"></script>
-    <script src="./modules/shared/header/controllers/header.ctrl.js"></script>
-
+    <script src="plugins/dataTables/datatables.min.js"></script>
+    <script src="plugins/dataTables/angular-datatables.min.js"></script>
+    <script src="plugins/dataTables/angular-datatables.buttons.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.flot/0.8.3/jquery.flot.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.5.5/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/ng-sortable/dist/ng-sortable.min.js"></script>
+    <script type="text/javascript" src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
 
 
 </head>
 
 <!-- define angular controller -->
-<body ng-controller="AppController as ac">
+<body ng-controller="AppController as ac" landing-scrollspy id="page-top">
 
-<!--<div class="page-spinner-bar">-->
-    <!--&lt;!&ndash;<div class="bounce1"></div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="bounce2"></div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="bounce3"></div>&ndash;&gt;</div>-->
-<div ng-show="isAuthorized" ng-include src="'./modules/shared/header/templates/header.html'" class="navbar navbar-fixed-top header">
-</div>
+<div class="wrapper">
 
-<!--<div id="main" class="page-container">-->
+    <!-- Navigation -->
+    <div ng-if="isAuthorized" ng-include src="'./modules/shared/navigation/templates/navbar.html'"></div>
 
+    <!-- Page wraper -->
+    <!-- ng-class with current state name give you the ability to extended customization your view -->
+    <div class="page-wrapper" ng-class="{'gray-bg':isAuthorized == true}">
 
-        <!--&lt;!&ndash;<img src="./images/arrow.png" ng-class="{'rotate-icon': toogledChat}"> </a>&ndash;&gt;-->
-    <!--<div class="container-fluid">-->
-        <!--<div class="row">-->
-            <!--<div class="col-sm-3 col-lg-2">-->
-                <!--<div ng-show="isAuthorized" ng-include src="'./modules/shared/navigation/templates/navbar.html'" class="navbar navbar-default navbar-fixed-side">-->
-                    <!--&lt;!&ndash; normal collapsible navbar markup &ndash;&gt;-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-sm-9 col-lg-10">-->
-                <!--&lt;!&ndash; your page content &ndash;&gt;-->
-                <!--<div class="page-content" ng-class="{'no-ml': !isAuthorized}">-->
-                    <!--<div class="viewport" ui-view></div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<a href="javascript:;" ng-show="isAuthorized" ng-click="toogleChat()" class="page-quick-sidebar-toggler" style="display:block"></a>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!---->
-    <!---->
-    <!---->
-    <!---->
-    <!---->
-    <!---->
-    <!---->
-<!--</div>-->
+        <!-- Page wrapper -->
+        <div ng-if="isAuthorized"  ng-include src="'./modules/shared/header/templates/header.html'"></div>
 
+        <!-- Main view  -->
+        <div ui-view></div>
 
-<div class="main-content-container" id="content">
-    <div class="row">
-        <div class="col-sm-3 col-lg-2">
-            <div class="sidebar-nav" ng-show="isAuthorized" ng-include src="'./modules/shared/navigation/templates/navbar.html'">
-            </div>
-        </div>
-        <div class="col-sm-9 col-lg-10">
-            <div class="page-content" ng-class="{'no-ml': !isAuthorized}">
-                <div class="viewport" ui-view></div>
-            </div>
-        </div>
-
-        <!--<a href="javascript:;" ng-show="isAuthorized" ng-click="toogleChat()" class="page-quick-sidebar-toggler" style="display:block"></a>-->
+        <!-- Footer -->
+        <!--<div ng-include="'views/common/footer.html'"></div>-->
 
     </div>
+    <!-- End page wrapper-->
+
+    <!-- Right Sidebar -->
+    <!--<div ng-include="'views/common/right_sidebar.html'"></div>-->
+
 </div>
 
-<footer class="text-center">
 
-</footer>
+<!--app-->
+<script src="./app.js"></script>
+<script src="./app.controller.js"></script>
+
+
+<!--controllers-->
+<script src="./modules/pages/auth/controllers/login.ctrl.js"></script>
+<script src="./modules/pages/auth/controllers/signup.ctrl.js"></script>
+<script src="./modules/pages/home/controllers/home.ctrl.js"></script>
+<script src="./modules/pages/auth/controllers/forgot.password.ctrl.js"></script>
+<script src="./modules/pages/profile/controllers/profile.ctrl.js"></script>
+<script src="./modules/shared/navigation/controllers/navigation.ctrl.js"></script>
+<script src="./modules/shared/header/controllers/header.ctrl.js"></script>
+<script src="./modules/pages/charts/controllers/chart.ctrl.js"></script>
+<script src="./modules/pages/departments/controllers/departments.ctrl.js"></script>
+<script src="./modules/pages/projects/controllers/projects.ctrl.js"></script>
+<script src="./modules/pages/boards/controllers/boards.ctrl.js"></script>
+
+
+
 
 </body>
-
 </html>
