@@ -2,8 +2,6 @@ const config = require('config')
     , randomstring = require('randomstring')
     , passport = require('passport')
     , JwtStrategy = require('passport-jwt').Strategy
-    , FacebookStrategy = require('passport-facebook').Strategy
-    , InfusionsoftStrategy = require('passport-infusionsoft').Strategy
     , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
     , ExtractJwt = require('passport-jwt').ExtractJwt
     , LocalStrategy = require('passport-local')
@@ -86,55 +84,7 @@ const googleLogin = new GoogleStrategy(config.get('services.google'), (accessTok
         .catch(done);
 });
 
-// Facebook login strategy
-const facebookLogin = new FacebookStrategy(config.get('services.facebook'), (accessToken, refreshToken, profile, done) => {
-    User.findOne({ 'services.facebook.id': profile.id, auth_strategy: 'facebook' })
-        .then((user) => {
-            if (user) return user;
-            let avatarSize = config.get('upload.avatar.size');
-            user = new User({
-                username: `fb.${profile.id}`,
-                auth_strategy: 'facebook',
-                email: profile.emails[0].value,
-                password: randomstring.generate(16),
-                profile: {
-                    avatar: `https://graph.facebook.com/${profile.id}/picture?width=${avatarSize}&height=${avatarSize}`,
-                    first_name: profile.name.givenName,
-                    last_name: profile.name.familyName
-                },
-                services: {
-                    facebook: {
-                        id: profile.id
-                    }
-                },
-                email_confirmed: true
-            });
-            return user.save();
-        })
-        .then((user) => {
-            user.services.facebook.access_token = accessToken;
-            return user.save();
-        })
-        .then((user) => {
-            done(null, user);
-        })
-        .catch(done);
-});
-
-const infusionsoftLogin = new InfusionsoftStrategy(config.get('services.infusionsoft'), (req, accessToken, refreshToken, profile, done) => {
-    req.user.set('services.infusionsoft', {
-        accessToken: accessToken,
-        refreshToken: refreshToken
-    });
-    req.user.save()
-        .then((user) => {
-            done(null, user);
-        })
-        .catch(done);
-});
 
 passport.use(jwtLogin);
 passport.use(localLogin);
 passport.use(googleLogin);
-passport.use(facebookLogin);
-passport.use(infusionsoftLogin);
