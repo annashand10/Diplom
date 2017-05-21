@@ -1,37 +1,18 @@
-var util = require('util');
-var express = require('express');
-var fs = require('fs');
-var path = require('path');
-var bodyParser = require('body-parser');
+const express = require('express')
+, frontend = require('./server/apps/frontend')
+    , backend = require('./server/apps/backend')
+    , admin = require('./server/apps/admin');
 
+const port = 8000;
 
-var app = express();
+const server = express()
+    .use(backend());
 
-var mongoose = require("mongoose");
-var connection = mongoose.connect("mongodb://localhost:27017/diplom");
-var autoIncrement = require('mongoose-auto-increment');
-autoIncrement.initialize(connection);
+server.use(frontend());
 
+// if (config.get('apps.admin.enabled')) {
+//     server.use(vhost(config.get('apps.admin.hostname'), admin()));
+// }
 
-var port = 8000;
-
-
-var env = process.env.NODE_ENV || 'development';
-app.locals.ENV = env;
-app.locals.ENV_DEVELOPMENT = env == 'development';
-
-app.use(bodyParser.urlencoded({extended: true}));
-//app.use(compress());
-app.use(bodyParser.json({limit: '10mb'}));
-
-module.exports = {app: app};
-
-
-app.use(express.static(__dirname + '/client')); //TODO: enable caching later
-
-app.all('*', function (req, res) {
-    res.sendFile(__dirname + '/client/index.html');
-});
-
-app.listen(port);
-console.log("Server listening on port %d", port);
+server.listen(port);
+console.log(`Your server is running on port ${ port }.`);
