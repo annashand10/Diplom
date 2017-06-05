@@ -4,95 +4,141 @@
         <ol class="breadcrumb">
             <li>
                 <a href="index.html">Home</a>
+
             </li>
+
             <li class="active">
                 <strong>Boards</strong>
             </li>
         </ol>
     </div>
+    <div class="col-lg-2">
+
+    </div>
 </div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <span class="label" style="font-size: 100%;" ng-class="'backlog'" ng-bind="'BACKLOG'"></span>
 
-<div class="wrapper wrapper-content  animated fadeInRight">
-    <div class="row" id="sortable-view">
-        <div class="connectPanels" ui-sortable="sortableOptions">
-
-            <div class="col-lg-3" ng-repeat="board in boards" style="overflow:scroll; height:550px;">
-                <div class="ibox float-e-margins" style="position: relative;">
-
-                    <div class="ibox-title">
-                        <!--<h5 ng-bind="board.status.toUpperCase()"></h5>-->
-                        <span class="label" style="font-size: 100%;" ng-class="board.status" ng-bind="board.status.toUpperCase()"></span>
-
-                        <div class="ibox-tools pull-right">
-
-                            <a class="dropdown-toggle" uib-dropdown-toggle href="#">
-                                <i class="fa fa-wrench"></i>
-                                <!--<b class="caret"></b>-->
-                            </a>
-
-                            <!--<ul uib-dropdown-menu class="animated fadeInRight m-t-xs">-->
-                                <!--<li><a href="addTask()">New Task</a></li>-->
-                                <!--<li><a href="#">Remove</a></li>-->
-                                <!--<li class="divider"></li>-->
-                                <!--<li><a href="/login">Logout</a></li>-->
-                            <!--</ul>-->
-
-                        </div>
+                    <div class="input-group add-task">
+                        <input type="text" placeholder="Add new task. " ng-model="task" class="input input-sm form-control">
+                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-white" ng-click="addTask(task)"> <i class="fa fa-plus"></i> Add task</button>
+                                </span>
                     </div>
-                    <div class="ibox-content" ng-repeat="additional in anotherBoards" >
-                        <p ng-bind="additional.description"></p>
-                    </div>
-                    <a class="remove-board-icon" href="" ng-click="removeBoard(board)"><i class="fa fa-trash-o "></i></a>
-
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" ng-model="todoList">
+                        <li class="{{task.statusClass}}-element" ng-repeat="task in todoList">
+                            {{task.content}}
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <span class="label" style="font-size: 100%;" ng-class="'doing'" ng-bind="'DOING'"></span>
 
-            <!--<div class="col-lg-3">-->
-                <!--<div class="ibox float-e-margins" style="position: relative;">-->
-                    <!--<div class="ibox-title">-->
-                        <!--<span class="label label-primary pull-right">Doing</span>-->
-                        <!--<h5>Custom Title</h5>-->
-                    <!--</div>-->
-                    <!--<div class="ibox-content">-->
-                        <!--<p ng-bind="board.description"></p>-->
+                    <div class="input-group add-task">
+                        <input type="text" placeholder="Add new task. " class="input input-sm form-control">
+                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-plus"></i> Add task</button>
+                                </span>
+                    </div>
 
-                    <!--</div>-->
-                    <!--<a class="remove-board-icon" href=""><i class="fa fa-trash-o "></i></a>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-3">-->
-                <!--<div class="ibox float-e-margins" style="position: relative;">-->
-                    <!--<div class="ibox-title">-->
-                        <!--<span class="label label-danger pull-right">Need Review</span>-->
-                        <!--<h5>Custom Title</h5>-->
-                    <!--</div>-->
-                    <!--<div class="ibox-content">-->
-                        <!--<p>Ipsum used since the 1500s is reproduced below for those interested.</p>-->
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" ng-model="inProgressList">
+                        <li class="{{task.statusClass}}-element" ng-repeat="task in inProgressList">
+                            {{task.content}}
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <span class="label" style="font-size: 100%;" ng-class="'needreview'" ng-bind="'NEED REVIEW'"></span>
 
-                    <!--</div>-->
-                    <!--<a class="remove-board-icon" href=""><i class="fa fa-trash-o "></i></a>-->
+                    <div class="input-group add-task">
+                        <input type="text" placeholder="Add new task. " class="input input-sm form-control">
+                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-plus"></i> Add task</button>
+                                </span>
+                    </div>
 
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-3">-->
-                <!--<div class="ibox float-e-margins" style="position: relative;">-->
-                    <!--<div class="ibox-title">-->
-                        <!--<span class="label label-success pull-right">Done</span>-->
-                        <!--<h5>Custom Title</h5>-->
-                    <!--</div>-->
-                    <!--<div class="ibox-content">-->
-                        <!--<p>The years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>-->
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" ng-model="completedList">
+                        <li class="{{task.statusClass}}-element" ng-repeat="task in completedList">
+                            {{task.content}}
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <span class="label" style="font-size: 100%;" ng-class="'done'" ng-bind="'DONE'"></span>
 
-                        <!--&lt;!&ndash;<h1 class="no-margins">80,600</h1>&ndash;&gt;-->
+                    <div class="input-group add-task">
+                        <input type="text" placeholder="Add new task. " class="input input-sm form-control">
+                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-plus"></i> Add task</button>
+                                </span>
+                    </div>
 
-                        <!--&lt;!&ndash;<div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<small>In first month</small>&ndash;&gt;-->
-                    <!--</div>-->
-                    <!--<a class="remove-board-icon" href=""><i class="fa fa-trash-o "></i></a>-->
-
-                <!--</div>-->
-            <!--</div>-->
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" ng-model="completedList">
+                        <li class="{{task.statusClass}}-element" ng-repeat="task in completedList">
+                            {{task.content}}
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
     </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <h4>
+                Serialised Output
+            </h4>
+
+            <div class="output p-m m white-bg">
+
+                <h3>TodDo tasks</h3>
+                {{todoList }}
+
+                <h3>In progress tasks</h3>
+                {{inProgressList }}
+
+                <h3>Completed tasks</h3>
+                {{completedList }}
+
+            </div>
+
+
+        </div>
+    </div>
+
+
 </div>

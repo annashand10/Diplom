@@ -1,24 +1,26 @@
-App.controller('ProfileController', ['$scope','$rootScope', function($scope, $rootScope) {
-
-    $scope.greeting = 'Azaza mishio!';
-
-    $rootScope.isAuthorized = true;
-
-    $scope.mishoy = ['Vtura', 'Sheva', 'Rotsker', 'Resheto']
+App.controller('ProfileController', ['$scope', '$rootScope', '$state', 'ProfileFactory',
+    function ($scope, $rootScope, $state, ProfileFactory) {
 
 
+        $rootScope.isAuthorized = true;
 
-    $scope.logMishio = logMishio;
+        $scope.profile = [];
 
-    logMishio();
+        $scope.goToEditProfile = goToEditProfile;
+        $scope.getProfileInfo = getProfileInfo;
 
 
-    function logMishio() {
+        function getProfileInfo() {
+            ProfileFactory.getProfile()
+                .then((res)=>{
+                    $scope.profile = res.data
+                })
+                .catch((error)=>console.log(error))
+        }
 
-        $scope.string = 'Huinia25'
-        console.log($scope.string, 'before')
-        $scope.string.slice('2')[1];
-        console.log($scope.string, 'after')
-    }
+        function goToEditProfile() {
+            $state.go('profile_edit')
+        }
 
-}]);
+
+    }]);

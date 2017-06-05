@@ -5,9 +5,6 @@
             <li>
                 <a href="/home">Home</a>
             </li>
-            <li>
-                <a>App views</a>
-            </li>
             <li class="active">
                 <strong>Profile</strong>
             </li>
@@ -21,6 +18,9 @@
 
 
     <div class="row m-b-lg m-t-lg">
+
+        <button type="button" style="color:darkslategrey" ng-click="goToEditProfile()" class="btn btn-outline btn-info">Edit Profile</button>
+
         <div class="col-md-6">
 
             <div class="profile-image">
@@ -73,8 +73,8 @@
             </table>
         </div>
         <div class="col-md-3">
-            <small>Sales in last 24h</small>
-            <h2 class="no-margins">206 480</h2>
+            <small>Created at</small>
+            <h2 class="no-margins">21 05 2017</h2>
             <div sparkline spark-data="chart.sparkline1" spark-options="chart.sparkline1Options"></div>
         </div>
 

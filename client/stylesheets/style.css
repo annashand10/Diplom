@@ -9,6 +9,26 @@
   border-radius: 8px;
 }
 
+  .creationLoader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #5b9bd1;
+    border-bottom: 16px solid #5b9bd1;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin: 40px auto 40px;
+  }
+  .success {
+    font-size: 120px;
+    color: green;
+  }
+
+  .error {
+    font-size: 120px;
+    color: red;
+  }
 /*=== 3. Text Outside the Box ===*/
 .etc-login-form {
   color: #919191;
@@ -151,7 +171,7 @@ label.form-invalid:after {
 [type="checkbox"]:checked,
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
-  position: absolute;
+  position: inherit;
   left: -9999px;
 }
 [type="checkbox"]:not(:checked) + label,
@@ -8997,6 +9017,13 @@ body.md-skin {
     padding-top: 33px;
     display: none;
   }
+
+
+  .add-task{
+    margin-top: 20px;
+  }
+
+
 
 
 

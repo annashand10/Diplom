@@ -22,11 +22,11 @@ const SettingSchema = new Schema({
  * @param {String} key
  * @param {*} value
  */
-SettingSchema.statics.set = function(key, value) {
-    return this.findOne({ name: key })
+SettingSchema.statics.set = function (key, value) {
+    return this.findOne({name: key})
         .then((doc) => {
             if (!doc) {
-                doc = new this({ name: key });
+                doc = new this({name: key});
             }
             doc.data = value;
             return doc.save();
@@ -37,8 +37,8 @@ SettingSchema.statics.set = function(key, value) {
  * Get setting value
  * @param {String} key
  */
-SettingSchema.statics.get = function(key) {
-    return this.findOne({ name: key }, '-_id data', { lean: true })
+SettingSchema.statics.get = function (key) {
+    return this.findOne({name: key}, '-_id data', {lean: true})
         .then((doc) => {
             return doc ? doc.data : doc;
         });
@@ -48,8 +48,8 @@ SettingSchema.statics.get = function(key) {
  * Get settings values in object
  * @param {String[]} keys
  */
-SettingSchema.statics.getObject = function(keys) {
-    return this.find({ name: { $in: keys } }, '-_id name data', { lean: true, limit: keys.length })
+SettingSchema.statics.getObject = function (keys) {
+    return this.find({name: {$in: keys}}, '-_id name data', {lean: true, limit: keys.length})
         .then((docs) => {
             const obj = {};
             docs.forEach(doc => obj[doc.name] = doc.data);
@@ -61,8 +61,8 @@ SettingSchema.statics.getObject = function(keys) {
  * Unset setting value
  * @param {Stream} key
  */
-SettingSchema.statics.unset = function(key) {
-    return this.remove({ name: key });
+SettingSchema.statics.unset = function (key) {
+    return this.remove({name: key});
 };
 
 module.exports = mongoose.model('Setting', SettingSchema);

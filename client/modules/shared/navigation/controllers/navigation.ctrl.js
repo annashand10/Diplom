@@ -5,7 +5,9 @@ App.controller('NavigationController', ['$scope','$state', function($scope, $sta
     $scope.logOut = logOut;
 
     function logOut() {
-        $state.go('login')
+        AuthFactory.logout()
+            .then((res)=>{$state.go('login')})
+            .catch((error)=>{alert("Failed to logout!");})
     }
 
 }]);
