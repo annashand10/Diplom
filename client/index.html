@@ -8,6 +8,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-signin-client_id" content="234820546501-o4upso3pk8hvju2u138sap3gak4lutib.apps.googleusercontent.com">
+
     <!-- SCROLLS -->
     <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />-->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
@@ -30,7 +32,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- SPELLS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+
+
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!--<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>-->
@@ -39,6 +44,14 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="bower_components/angular-flot/angular-flot.min.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <script src="bower_components/angular-directive.g-signin/google-plus-signin.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+
+
+
 
     <script src="plugins/dataTables/datatables.min.js"></script>
     <script src="plugins/dataTables/angular-datatables.min.js"></script>
@@ -85,6 +98,14 @@
 <script src="./app.js"></script>
 <script src="./app.controller.js"></script>
 
+<!--services-->
+
+<script src="./modules/core/services/auth.service.js"></script>
+<script src="./modules/core/services/boards.service.js"></script>
+<script src="./modules/core/services/profile.service.js"></script>
+<script src="./modules/core/services/employees.service.js"></script>
+<script src="./modules/core/services/projects.service.js"></script>
+
 
 <!--controllers-->
 <script src="./modules/pages/auth/controllers/login.ctrl.js"></script>
@@ -95,11 +116,19 @@
 <script src="./modules/shared/navigation/controllers/navigation.ctrl.js"></script>
 <script src="./modules/shared/header/controllers/header.ctrl.js"></script>
 <script src="./modules/pages/charts/controllers/chart.ctrl.js"></script>
-<script src="./modules/pages/departments/controllers/departments.ctrl.js"></script>
+<script src="modules/pages/employees/controllers/employees.ctrl.js"></script>
+<script src="modules/pages/employees/controllers/new.employee.ctrl.js"></script>
+<script src="modules/pages/employees/controllers/edit.employee.ctrl.js"></script>
+<script src="modules/pages/profile/controllers/profile.edit.ctrl.js"></script>
+
+
+
 <script src="./modules/pages/projects/controllers/projects.ctrl.js"></script>
+<script src="./modules/pages/projects/controllers/new.project.ctrl.js"></script>
+<script src="./modules/pages/projects/controllers/project.detail.ctrl.js"></script>
+<script src="./modules/pages/projects/controllers/edit.project.ctrl.js"></script>
 <script src="./modules/pages/boards/controllers/boards.ctrl.js"></script>
-
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 
 </body>

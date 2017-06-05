@@ -1,5 +1,5 @@
 const express = require('express')
-, frontend = require('./server/apps/frontend')
+    , frontend = require('./server/apps/frontend')
     , backend = require('./server/apps/backend')
     , admin = require('./server/apps/admin');
 
